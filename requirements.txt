@@ -2,3 +2,4 @@ aiohttp>=3.9,<4
 python-telegram-bot>=21,<23
 Telethon>=1.36,<2
 mega.py
+tenacity==8.2.3
