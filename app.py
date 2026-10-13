@@ -102,7 +102,7 @@ async def register_uploaded(chat_id, sent, path):
         "name": Path(path).name,
         "size": size,
     }
-    return f"{PUBLIC_URL}/watch/{token}"
+    return f"{PUBLIC_URL}/embed/{token}"
 
 
 async def start_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -272,7 +272,7 @@ async def incoming_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "mime": mime or "video/mp4",
             "size": size,
         }
-        link = f"{PUBLIC_URL}/watch/{token}"
+        link = f"{PUBLIC_URL}/embed/{token}"
         await status.edit_text(
             "╭━━━━━━━━━━━━━━━━━━━━━━╮\n"
             "       ✅  <b>YOUR STREAM IS READY</b>\n"
@@ -393,6 +393,7 @@ async def main():
     web_app.router.add_get("/", home)
     web_app.router.add_get("/health", health)
     web_app.router.add_get("/watch/{token}", watch)
+    web_app.router.add_get("/embed/{token}", watch)
     web_app.router.add_get("/media/{token}", media)
     runner = web.AppRunner(web_app)
     await runner.setup()
